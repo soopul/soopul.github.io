@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="ko"><meta charset="UTF-8"><meta content="width=device-width,initial-scale=1"name="viewport"><title>npm update 실행시 '3 high severity vulnerabilities' 메시지</title><link href="/src/style/index.css"rel="stylesheet"><div class="post-log soopul-log"><div class="post"><span class="date">2021-06-08</span><h1>npm update 실행시 '3 high severity vulnerabilities' 메시지</h1><div class="content"><h2 id="문제">문제</h2><pre><code>% npm update
+
+up to date, audited 241 packages in 2s
+
+7 packages are looking for funding
+  run `npm fund` for details
+
+3 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+</code></pre><p><code class="highlighter-rouge language-plaintext">3 high severity vulnerabilities</code> 메시지가 표시될 때의 버전이 노드는 <code class="highlighter-rouge language-plaintext">14.17.0</code> 이고, npm 은 <code class="highlighter-rouge language-plaintext">7.16.0</code> 이었다. 내 경우에는 너무 높은 npm 버전을 사용해서 생긴 문제인 거 같았다.<h2 id="해결">해결</h2><pre><code>$ sudo npm cache clean -f
+$ sudo npm install -g n
+$ sudo n lts 
+    installed : v14.17.0 (with npm 6.14.13)
+</code></pre><p>npm 이 <code class="highlighter-rouge language-plaintext">6.14.13</code> 버전으로 다운그레이드되면서 <code class="highlighter-rouge language-plaintext">npm update</code>를 해도 더는 문제가 발생하지 않음.</div></div></div>
